@@ -14,18 +14,6 @@ class PostFormTester(BaseFormTester):
     def has_textarea(self):
         return True
 
-    @property
-    def one_and_only_one(self):
-        return "одна и только одна"
-
-    @property
-    def which_obj(self):
-        return "публикация"
-
-    @property
-    def of_which_obj(self):
-        return "публикации"
-
     @staticmethod
     def init_create_item_form(Form: Type[BaseForm], **form_data) -> BaseForm:
         image_data = BytesIO()
@@ -34,7 +22,9 @@ class PostFormTester(BaseFormTester):
         from blog.models import Post
 
         files = {
-            PostModelAdapter(Post).get_student_field_name("image"): SimpleUploadedFile(
+            PostModelAdapter(Post).get_student_field_name(
+                "image"
+            ): SimpleUploadedFile(
                 "test_image.jpg", image_data.read(), content_type="image/jpeg"
             ),
         }
@@ -50,7 +40,9 @@ class PostFormTester(BaseFormTester):
         from blog.models import Post
 
         files = {
-            PostModelAdapter(Post).get_student_field_name("image"): SimpleUploadedFile(
+            PostModelAdapter(Post).get_student_field_name(
+                "image"
+            ): SimpleUploadedFile(
                 "test_image.jpg", image_data.read(), content_type="image/jpeg"
             ),
         }

@@ -1,12 +1,10 @@
-from typing import List
-
-from django.urls import URLPattern, path
-
+from django.urls import path
 from . import views
 
-app_name: str = "pages"
+app_name = 'pages'
+handler404 = 'pages.views.page_not_found'
 
-urlpatterns: List[URLPattern] = [
-    path("about/", views.AboutTemplateView.as_view(), name="about"),
-    path("rules/", views.RulesTemplateView.as_view(), name="rules"),
+urlpatterns = [
+    path('about/', views.AboutView.as_view(), name='about'),
+    path('rules/', views.RulesView.as_view(), name='rules'),
 ]
